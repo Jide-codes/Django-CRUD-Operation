@@ -1,1 +1,1 @@
-web: gunicorn EnrollmentForum.wsgi: application --log-file - 
+web: gunicorn EnrollmentForum.wsgi.application --log-file - 
