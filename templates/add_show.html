@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-4">
+        <h3 class="text-center alert alert-info" >Add New User</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Add"/>
+        </form>
+    </div>
+
+
+<div class="col-sm-7 offset-1">
+<h3  class="text-center alert alert-info" >Show User Data</h3>
+
+{% if student %}
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+
+
+    <tbody>
+        {% comment %} FOR LOOP INITIATION {% endcomment %}
+        {% for stud in student %}
+      <tr>
+        <th scope="row">{{stud.id}}</th>
+        <td>{{stud.name}}</td>
+        <td>{{stud.email}}</td>
+        <td>{{stud.password}}</td>
+
+            <td>
+              <a  href="{% url 'update_data' stud.id %}" class="btn btn-warning btn-sm"></a>
+              <a  href="{% url 'delete_data' stud.id %}" class="btn btn-danger btn-sm"></a>
+            
+            </td>
+{% comment %}THE ACTION BUTTONS (EDIT AND DELETE)  {% endcomment %}
+        <td>
+            <a id='botbtn1'href="{% url 'update_data' stud.id %}" class="btn btn-warning btn-sm">Edit</a>
+            <a id="botbtn1" href="{% url 'delete_data' stud.id %}" class="btn btn-danger btn-sm">Delete</a>
+           
+        </td>
+      </tr>
+      {% endfor %}
+        {% comment %} FOR LOOP END HERE {% endcomment %}
+    </tbody>
+
+  </table>
+
+{% else %}
+<h3 class="text-center alert alert-warning" >No Record</h3>
+{% endif %}
+
+</div>
+</div>
+{% endblock content %}
