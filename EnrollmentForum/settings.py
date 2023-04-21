@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-32*g%##=+1_hmniu2^_d9-2e3b=)%@8jev1@7dk33+t+ki*phx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
 
     'StudentData',
-    'gunicorn'
+    
 ]
 
 MIDDLEWARE = [
@@ -121,11 +121,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIR =[
-    os.path.join(BASE_DIR, 'StudentData/static/')
+STATICFILES_DIR =[BASE_DIR, 'static'
+    # os.path.join(BASE_DIR, 'StudentData/static/')
 ]
 
-STATIC_ROOT= os.path.join(BASE_DIR, 'asset')
+STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

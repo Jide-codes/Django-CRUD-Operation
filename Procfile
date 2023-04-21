@@ -1,1 +1,1 @@
-web: gunicorn 'EnrollmentForum.wsgi' 
+web: gunicorn EnrollmentForum.wsgi: application --log-file - --log-level debug 
