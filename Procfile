@@ -1,1 +1,1 @@
-web: gunicorn EnrollmentForum.wsgi.application --log-file - 
+web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn EnrollmentForum.wsgi
